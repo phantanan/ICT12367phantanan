@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกข้อมูลพนักงาน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            /* พื้นหลังแบบไล่ระดับสีนุ่มๆ */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* เผื่อสำหรับหน้าจอมือถือ */
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px; /* เพิ่มพื้นที่ว่างด้านใน */
+            border-radius: 15px; /* มุมโค้งมนมากขึ้น */
+            /* เงาที่ดูนุ่มลึกและทันสมัยขึ้น */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px; /* กำหนดความกว้างสูงสุด */
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50; /* สีเข้มแบบนุ่มนวล */
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างช่อง */
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #4a5568; /* สีเทาเข้มดูสบายตา */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px 15px; /* เพิ่มพื้นที่การพิมพ์ */
+            border: 2px solid #e2e8f0; /* ขอบสีเทาอ่อน */
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s ease; /* เอฟเฟกต์การเปลี่ยนสถานะที่นุ่มนวล */
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        /* เมื่อคลิกที่ช่องกรอกข้อมูล */
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #28a745; /* เปลี่ยนขอบเป็นสีเขียว */
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2); /* เพิ่มแสงฟุ้งสีเขียวรอบๆ */
+        }
+
+        /* ปรับแต่ง Placeholder (ข้อความแนะนำ) */
+        ::placeholder {
+            color: #a0aec0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            /* ไล่ระดับสีเขียวที่ปุ่ม */
+            background: linear-gradient(to right, #28a745, #218838);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: transform 0.2s, box-shadow 0.2s; /* เอฟเฟกต์สำหรับปุ่ม */
+        }
+
+        button:hover {
+            /* เมื่อเอาเมาส์ไปวาง ปุ่มจะลอยขึ้นเล็กน้อย */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        button:active {
+             /* เมื่อกดปุ่ม */
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>บันทึกข้อมูลพนักงาน</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="กรอกชื่อ-นามสกุล">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="example@company.com">
+            </div>
+
+            <div class="form-group">
+                <label for="position">Position</label>
+                <select id="position" name="position">
+                    <option value="" disabled selected>เลือกตำแหน่ง</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Developer">Developer</option>
+                    <option value="HR">HR</option>
+                    <option value="Staff">Staff</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="08x-xxxxxxx">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
