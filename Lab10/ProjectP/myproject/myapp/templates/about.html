@@ -1,0 +1,108 @@
+{% extends "base.html"%}
+
+{% block title %}
+    <title>หน้าแรกของเว็บไซต์ | ผลงานของเรา</title>
+    <style>
+        /* CSS สำหรับจัดการ Style และ Hover Effect */
+        
+        /* 1. เตรียมความพร้อมของรูปภาพ */
+        .gallery-item {
+            overflow: hidden; /* ป้องกันรูปภาพล้นขอบช่องเมื่อขยายตัว */
+            border-radius: 10px; /* ทำมุมโค้งให้ช่องรวม */
+            transition: all 0.3s ease-in-out; /* ทำให้การเปลี่ยนแปลงนุ่มนวล */
+            border: 3px solid transparent; /* สร้างขอบใสรอไว้ก่อน (กันขยับเวลา hover) */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* เพิ่มเงาบางๆ ให้ดูมีมิติ */
+        }
+
+        .gallery-item img {
+            transition: transform 0.3s ease-in-out; /* ทำให้รูปขยายอย่างนุ่มนวล */
+            width: 100%;
+            height: 250px; /* กำหนดความสูงคงที่เพื่อให้เรียงกันสวย */
+            object-fit: cover; /* ตัดรูปให้พอดีช่องโดยไม่เสียสัดส่วน */
+        }
+
+        /* 2. Effect เมื่อเอาเมาส์ไปชี้ (Hover) */
+        .gallery-item:hover {
+            transform: translateY(-5px); /* ยกตัวขึ้นเล็กน้อย */
+            border-color: #0d6efd; /* เปลี่ยนสีขอบเป็นสีฟ้า (Bootstrap Primary) */
+            box-shadow: 0 8px 15px rgba(13, 110, 253, 0.2); /* เพิ่มเงาสีฟ้า */
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1); /* ขยายรูปภาพขึ้น 10% */
+        }
+
+        /* ปรับปรุง Font และระยะห่างของหัวข้อ */
+        .gallery-title h1 {
+            font-weight: 700;
+            color: #333;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}        
+<div class="mt-5 container mb-5">
+        <section>
+            <div class="text-center mb-5 gallery-title">
+                <h1>ผลงานของเรา</h1>
+                <p class="text-muted col-md-8 mx-auto">นี่คือส่วนหนึ่งของผลงานที่เราภูมิใจนำเสนอ จัดแสดงสินค้าและโปรเจกต์ต่างๆ ที่ผ่านกระบวนการออกแบบและผลิตอย่างพิถีพิถัน</p>
+            </div>
+            
+            <div class="row g-4"> <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Headphones">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Watch">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Camera">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Gadget">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Sunglasses">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Backpack">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Instax Camera">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Shoes">
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1526406915894-7bcd65f60845?auto=format&fit=crop&w=600&h=500&q=80" class="img-fluid" alt="Gadget Product">
+                    </div>
+                </div>
+                
+             </div>
+        </section>
+     </div>
+{% endblock %}

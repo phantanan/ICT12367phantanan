@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>บันทึกข้อมูลพนักงาน | Employee Form</title>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-0">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-primary">บันทึกข้อมูลพนักงาน</h2>
+                    <p class="text-muted">กรุณากรอกข้อมูลรายละเอียดพนักงานให้ครบถ้วน</p>
+                </div>
+
+                <form action="#" method="POST" class="needs-validation">
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label fw-semibold">ชื่อ-นามสกุล</label>
+                        <input type="text" class="form-control form-control-lg" id="fullname" name="fullname" 
+                               placeholder=" กรุณากรอกชื่อ-นามสกุล" required>
+                    </div>
+
+                    <div class="row">
+                        <div class=" mb-3">
+                            <label for="age" class="form-label fw-semibold">อายุ</label>
+                            <input type="text" class="form-control" id="age" name="age" required>
+                        </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                            <i class="bi bi-save"></i> บันทึกข้อมูล
+                        </button>
+                        <a href="/" class="btn btn-light text-muted">ยกเลิก</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ปรับแต่ง Input เมื่อมีการ Focus ให้ดูนุ่มนวลขึ้น */
+    .form-control:focus, .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    }
+    
+    /* ปรับแต่งปุ่มให้มีการขยายตัวเล็กน้อยเวลาเอาเมาส์ไปวาง */
+    .btn-primary {
+        transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+</style>
+{% endblock %}
