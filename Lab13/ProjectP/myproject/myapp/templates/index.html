@@ -1,0 +1,157 @@
+{% extends "base.html"%}
+
+{% block title %}
+<title>หน้าแรกของเว็บไซต์ | ยินดีต้อนรับ</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+    /* 1. สร้าง Keyframes สำหรับแอนิเมชันรูปแบบต่างๆ */
+
+    /* เลื่อนลงและค่อยๆ ชัดขึ้น (สำหรับไอคอน) */
+    @keyframes floatDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* เลื่อนขึ้นและค่อยๆ ชัดขึ้น (สำหรับข้อความ) */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ซูมขยายและค่อยๆ ชัดขึ้น (สำหรับปุ่ม) */
+    @keyframes zoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* 2. นำแอนิเมชันมาสร้างเป็น Class พร้อมกำหนดความหน่วงเวลา (Delay) */
+
+    .anim-float-down {
+        animation: floatDown 0.8s ease-out forwards;
+    }
+
+    .anim-fade-up {
+        opacity: 0;
+        /* ซ่อนไว้ก่อน */
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: 0.3s;
+        /* รอ 0.3 วินาทีค่อยแสดง */
+    }
+
+    .anim-zoom-in {
+        opacity: 0;
+        /* ซ่อนไว้ก่อน */
+        animation: zoomIn 0.8s ease-out forwards;
+        animation-delay: 0.6s;
+        /* รอ 0.6 วินาทีค่อยแสดง */
+    }
+
+    /* เอฟเฟกต์ Hover ของปุ่มให้ดูเด้งๆ ตอนเอาเมาส์ชี้ (ของแถม) */
+    .btn-dynamic {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-dynamic:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .btn-pink {
+        background-color: pink;
+        color: white;
+    }
+
+    .btn-orange {
+        background-color: orange;
+        color: white;
+    }
+
+    .center-btn {
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="px-4 py-5 my-5 text-center bg-white rounded-3 shadow-sm border overflow-hidden">
+
+    <i class="bi bi-rocket-takeoff display-1 text-primary mb-3 d-block anim-float-down"></i>
+
+    <h1 class="display-5 fw-bold text-dark mb-4 anim-fade-up">ยินดีต้อนรับสู่เว็บไซต์ของเรา</h1>
+
+    <div class="col-lg-6 mx-auto">
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center anim-zoom-in">
+            <a href="/form" class="btn btn-primary btn-lg px-4 gap-3 rounded-pill shadow-sm btn-dynamic">
+                <i class="bi bi-person-lines-fill"></i> สมัครงาน / กรอกข้อมูล
+            </a>
+            <a href="/about" class="btn btn-outline-secondary btn-lg px-4 rounded-pill btn-dynamic">
+                ทำความรู้จักเรา
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <form action="" method="GET" class="d-flex">
+        <input class="form-control me-2" type="search" name="q" placeholder="ค้นหาชื่อประชากร..." aria-label="Search"
+            value="{{ request.GET.q}}">
+        <button class="btn btn-outline-primary me-2" type="submit">ค้นหา</button>
+        <a href="/" class="btn btn-outline-secondary">ล้างค่า</a>
+    </form>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">รหัสประชากร</th>
+            <th scope="col">ชื่อประชากร</th>
+            <th scope="col">อายุ</th>
+            <th scope="col">วันที่เพิ่มข้อมูล</th>
+            <th scope="col" style="text-align: center;">แก้ไข</th>
+            <th scope="col" style="text-align: center;">ลบ</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in all_Person %}
+        <th scope="row">{{ person.id }}</th>
+        <td>{{ person.name }}</td>
+        <td>{{ person.age }}</td>
+        <td>{{ person.date }}</td>
+        <td class="center-btn">
+            <a href="{% url 'edit' person.id %}" class="btn btn-orange">แก้ไข</a>
+        </td>
+
+        <td class="center-btn">
+            <a href="{% url 'delete' person.id %}"
+                onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลของ {{ person.name }}?');"
+                class="btn btn-danger">ลบ</a>
+        </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
